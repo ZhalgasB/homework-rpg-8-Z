@@ -1,6 +1,7 @@
 package com.narxoz.rpg.combatant;
 
 import com.narxoz.rpg.state.HeroState;
+import com.narxoz.rpg.state.NormalState;
 
 /**
  * Represents a player-controlled hero participating in the tower climb.
@@ -26,6 +27,7 @@ public class Hero {
         this.maxHp = hp;
         this.attackPower = attackPower;
         this.defense = defense;
+        this.state = new NormalState();
     }
 
     public void setState(HeroState state) {
@@ -56,6 +58,7 @@ public class Hero {
     public int getAttackPower()    { return attackPower; }
     public int getDefense()        { return defense; }
     public boolean isAlive()       { return hp > 0; }
+
 
     /**
      * Reduces this hero's HP by the given amount, clamped to zero.

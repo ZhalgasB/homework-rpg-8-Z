@@ -23,7 +23,7 @@ public class PoisonedState implements HeroState{
 
     @Override
     public void onTurnStart(Hero hero) {
-        System.out.println(hero.getName() + "Poisoned");
+        System.out.println(hero.getName() + " Poisoned");
     }
 
     @Override
@@ -31,7 +31,7 @@ public class PoisonedState implements HeroState{
         duration--;
 
         if (duration <=- 0){
-            System.out.println(hero.getName() + "Not poisoned anymore");
+            System.out.println(hero.getName() + " Not poisoned anymore");
             hero.setState(new NormalState());
         }
     }

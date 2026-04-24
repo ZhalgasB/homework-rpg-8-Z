@@ -36,7 +36,7 @@ public class CombatFloor extends TowerFloor{
 
     @Override
     protected void awardLoot(List<Hero> party, FloorResult result) {
-        System.out.println("Sword in garbage");
+        System.out.println(" Award : Sword in garbage");
     }
 
     @Override
