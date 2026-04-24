@@ -1,5 +1,7 @@
 package com.narxoz.rpg.combatant;
 
+import com.narxoz.rpg.state.HeroState;
+
 /**
  * Represents a player-controlled hero participating in the tower climb.
  *
@@ -14,12 +16,38 @@ public class Hero {
     private final int attackPower;
     private final int defense;
 
+
+
+    private HeroState state;
+
     public Hero(String name, int hp, int attackPower, int defense) {
         this.name = name;
         this.hp = hp;
         this.maxHp = hp;
         this.attackPower = attackPower;
         this.defense = defense;
+    }
+
+    public void setState(HeroState state) {
+        System.out.println(name + "state: " + state.getName());
+
+        this.state = state;
+    }
+
+
+
+    public HeroState getState() {
+        return state;
+    }
+
+    public int getModifiedAttack(){
+        return state.modifyOutgoingDamage(attackPower);
+    }
+
+    public void applyIncDamage(int rawDmg){
+        int finalDmg = state.modifyIncomingDamage(Math.max(0,rawDmg-defense));
+        takeDamage(finalDmg);
+        System.out.println(name + " take " + finalDmg + "DMG.HP: " + hp );
     }
 
     public String getName()        { return name; }
